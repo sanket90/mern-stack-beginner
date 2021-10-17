@@ -39,3 +39,7 @@ HTTP Response
 
 
 Hoisting
+
+
+Dynamically typed language
+Loosly typed
