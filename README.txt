@@ -63,3 +63,11 @@ web component
 
 Create ReactJs App
 npx create-react-app reactjsapp  
+
+
+
+
+
+ReactJs
+function based -> Stateless
+class based -> May or May not be Stateless

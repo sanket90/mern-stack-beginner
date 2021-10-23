@@ -1,11 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import FirstComp from './components/FirstComp';
+import ClassBasedComp from './components/ClassBasedComp';
+import FunctionBasedComp from './components/FunctionBasedComp';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>Hello World.!</h1>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,6 +23,11 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <FirstComp></FirstComp>
+      <ClassBasedComp></ClassBasedComp>
+      <FunctionBasedComp></FunctionBasedComp>
+
     </div>
   );
 }
