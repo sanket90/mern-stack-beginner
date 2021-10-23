@@ -43,3 +43,23 @@ Hoisting
 
 Dynamically typed language
 Loosly typed
+
+
+
+
+By Facebook
+ReactJs
+GraphQl
+ReactNative
+
+By google
+Angular
+
+VueJs
+
+JS
+web component
+
+
+Create ReactJs App
+npx create-react-app reactjsapp  
