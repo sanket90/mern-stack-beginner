@@ -71,3 +71,11 @@ npx create-react-app reactjsapp
 ReactJs
 function based -> Stateless
 class based -> May or May not be Stateless
+
+
+
+Lec06:
+1. ProductItem component - Re-usable, independent, Dumb component
+2. SearchProduct component - Re-usable, independent, Dumb component
+3. ProductList component - Re-usable, independent
+4. ProductDetail component - Re-usable, independent

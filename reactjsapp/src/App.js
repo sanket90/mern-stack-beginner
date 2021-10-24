@@ -1,14 +1,15 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import FirstComp from './components/FirstComp';
-import ClassBasedComp from './components/ClassBasedComp';
-import FunctionBasedComp from './components/FunctionBasedComp';
+// import FirstComp from './components/FirstComp';
+// import ClassBasedComp from './components/ClassBasedComp';
+// import FunctionBasedComp from './components/FunctionBasedComp';
+import ProductList from './components/ProductList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello World.!</h1>
         <p>
@@ -26,8 +27,9 @@ function App() {
 
       <FirstComp></FirstComp>
       <ClassBasedComp></ClassBasedComp>
-      <FunctionBasedComp></FunctionBasedComp>
+      <FunctionBasedComp></FunctionBasedComp> */}
 
+      <ProductList></ProductList>
     </div>
   );
 }

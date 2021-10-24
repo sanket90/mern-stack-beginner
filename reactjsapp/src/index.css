@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* Generic Styling */
+.row {/* Base row styling here */}
+.column {/* Base column styling goes here */}
+.row .column {/* Base row-column styling goes here */}
+
+
+/* Specific Styling */
+.product-item {}
+.product-item .row {/* Row styling 1 */}
+.product-item .row .column {/* Column styling 1 */}
+
+
+.product-detail {}
+.product-detail .row {/* Row styling 2 */}
