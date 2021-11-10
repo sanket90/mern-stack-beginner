@@ -1,36 +1,36 @@
-// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-// import FirstComp from './components/FirstComp';
-// import ClassBasedComp from './components/ClassBasedComp';
-// import FunctionBasedComp from './components/FunctionBasedComp';
-import ProductList from './components/ProductList';
+
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+
+import HomePage from './routes/Home';
+import AboutPage from './routes/About';
 
 function App() {
   return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Hello World.!</h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <div className="App">
 
-      <FirstComp></FirstComp>
-      <ClassBasedComp></ClassBasedComp>
-      <FunctionBasedComp></FunctionBasedComp> */}
+        {/* Links to Pages / Routes */}
+        <Link to="/home">Go To Home</Link>
+        <br/>
+        <Link to="/about">Go To About</Link>
 
-      <ProductList></ProductList>
-    </div>
+        {/* THIS IS Route container */}
+        <Switch>
+          
+          <Route path="/home">
+            <HomePage></HomePage>
+          </Route>
+
+          <Route path="/about">
+            <AboutPage></AboutPage>
+          </Route>
+
+        </Switch>
+
+      </div>
+    </BrowserRouter>
   );
 }
 
