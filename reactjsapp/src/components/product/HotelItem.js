@@ -1,6 +1,6 @@
 import React from "react";
 
-class ProductItem extends React.Component {
+class HotelItem extends React.Component {
 
     render() {
         return (
@@ -32,4 +32,4 @@ class ProductItem extends React.Component {
 }
 
 
-export default ProductItem;
+export default HotelItem;
