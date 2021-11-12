@@ -79,3 +79,13 @@ Lec06:
 2. SearchProduct component - Re-usable, independent, Dumb component
 3. ProductList component - Re-usable, independent
 4. ProductDetail component - Re-usable, independent
+
+
+New
+BrowserRouter - HTML5
+HistoryAPI
+domain.com/home
+
+Old
+HashRouter + Window.Location
+domain.com/#/home
