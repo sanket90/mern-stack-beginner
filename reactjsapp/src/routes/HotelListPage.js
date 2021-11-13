@@ -12,14 +12,34 @@ class HotelListPage extends React.Component {
     constructor(props) {
         super(props);
 
-        const hotelDataService = new HotelDataService();
         this.state = {
-            hotelList: hotelDataService.getAllHotels(),
+            hotelList: [],
             hotelDetailUrl: props.match.url
         };
     }
 
+    loadHotels() {
+        const hotelDataService = new HotelDataService();
+        hotelDataService
+            .getAllHotels()
+            .then(hotels => {
+                this.setState({ hotelList: hotels });
+            });
+    }
+
+    componentDidMount() {
+        this.loadHotels();
+    }
+
     render() {
+        if (!this.state.hotelList.length) {
+            return (
+                <div>
+                    <h2>LOADING...</h2>    
+                </div>
+            );
+        }
+
         return (
             <div>
                 <h2>Hotel List Page</h2>

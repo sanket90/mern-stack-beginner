@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 class HotelDataService {
 
     hotelList = [
@@ -43,14 +45,24 @@ class HotelDataService {
         }
     ];
 
-
-    getAllHotels() {
-        return this.hotelList
-          .sort((item1, item2) => item1.currentPrice - item2.currentPrice);
+    sleep() {
+      return new Promise(resolve => setTimeout(resolve, 2000))
     }
 
-    getHotelById(id) {
-        return this.hotelList.find(item => item.id == id);
+    async getAllHotels() {
+        await this.sleep()
+        const response = await axios.get("/data/productList.json")
+        const hotelList = response.data;
+        
+        return hotelList.sort((item1, item2) => item2.currentPrice - item1.currentPrice);
+    }
+
+    async getHotelById(id) {
+      await this.sleep()
+      const response = await axios.get("/data/productList.json")
+      const hotelList = response.data;
+      
+      return hotelList.find(item => item.id == id);
     }
 
     filterHotelByName(title) {

@@ -13,14 +13,32 @@ class HotelDetailPage extends React.Component {
 
         console.log(props);
 
+        this.state = {};
+    }
+
+    loadHotelById() {
         const hotelDataService = new HotelDataService();
-        this.state = {
-            hotelData: hotelDataService.getHotelById(props.match.params.id)
-        };
+        hotelDataService
+            .getHotelById(this.props.match.params.id)
+            .then(hotel => {
+                this.setState({ hotelData: hotel });
+            });
+    }
+
+    componentDidMount() {
+        this.loadHotelById();
     }
 
     render() {
         console.log(this.props);
+
+        if (!this.state.hotelData) {
+            return (
+                <div>
+                    <h2>LOADING...</h2>    
+                </div>
+            );
+        }
 
         return (
             <div>
