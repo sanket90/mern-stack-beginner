@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 import HotelItem from "./HotelItem";
 
 function HotelList(props) {
-    console.log(props);
     return (
         <div className="product-list">
             {
-                props.hotelList.map(productData => {
+                props.hotelList.map(hotelData => {
 
                     return (
-                        <div key={productData.id}>
+                        <div key={hotelData.id}>
                             <HotelItem
-                                imgUrl={productData.imgUrl}
-                                title={productData.title}
-                                description={productData.description}
-                                currentPrice={productData.currentPrice}
-                                originalPrice={productData.originalPrice}
+                                imgUrl={hotelData.imgUrl}
+                                title={hotelData.title}
+                                description={hotelData.description}
+                                currentPrice={hotelData.currentPrice}
+                                originalPrice={hotelData.originalPrice}
+                                location={hotelData.location}
                             ></HotelItem>
 
-                            <Link to={`${props.hotelDetailUrl}/${productData.id}`}>Go To {productData.title}</Link>
+                            <Link to={`${props.hotelDetailUrl}/${hotelData.id}`}>Go To {hotelData.title}</Link>
                         </div>
 
                     );

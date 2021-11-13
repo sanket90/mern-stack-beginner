@@ -5,6 +5,8 @@ import { BrowserRouter, Link, Route, Switch, Redirect } from 'react-router-dom';
 
 import HomePage from './routes/Home';
 import AboutPage from './routes/About';
+import HotelListPage from './routes/HotelListPage';
+import HotelDetailPage from './routes/HotelDetailPage';
 
 function App() {
   return (
@@ -24,11 +26,9 @@ function App() {
 
           <Route path="/home"> <HomePage /> </Route>
           <Route path="/about"> <AboutPage /> </Route>
-          <Route path="/hotels/:id"> <AboutPage /> </Route>
-          <Route path="/hotels"> <AboutPage /> </Route>
+          <Route path="/hotels/:id"> <HotelDetailPage /> </Route>
+          <Route path="/hotels"> <HotelListPage /> </Route>
           
-
-          {/* <Route exact path="/"> <AboutPage /> </Route> */}
           <Redirect exact path="/" to="/about"></Redirect>
           <Redirect path="/**" to="/about"></Redirect>
 
