@@ -8,7 +8,7 @@ class HotelDataService {
 
     async getAllHotels() {
         await this.sleep()
-        const response = await axios.get("http://localhost:8000/fetchAllHotels")
+        const response = await axios.get("http://localhost:8100/fetchAllHotels")
         const hotelList = response.data;
         
         return hotelList.sort((item1, item2) => item2.currentPrice - item1.currentPrice);
@@ -16,7 +16,7 @@ class HotelDataService {
 
     async getHotelById(id) {
       await this.sleep()
-      const response = await axios.get(`http://localhost:8000/fetchHotelById?id=${id}`)
+      const response = await axios.get(`http://localhost:8100/fetchHotelById?id=${id}`)
       const hotelObject = response.data;
       return hotelObject;
     }
