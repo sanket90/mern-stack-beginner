@@ -5,6 +5,7 @@ const logger = require('./middlewares/logger')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const hotelRouter = require('./routes/hotels');
 
 var app = express();
 app.use(logger());
@@ -15,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/hotels', hotelRouter);
 
 
 // Error Handlers should be placed last

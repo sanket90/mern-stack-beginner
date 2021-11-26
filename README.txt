@@ -98,3 +98,9 @@ domain.com/home
 Old
 HashRouter + Window.Location
 domain.com/#/home
+
+
+REST - protocol
+All the API - Request-Response should be JSON
+Update HotelService to be more Functional
+Create new APIs for Create,Update,Delete hotels
