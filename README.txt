@@ -28,8 +28,17 @@ protocal://url
 GET, POST, PUT, DELETE, HEAD, PATCH, OPTIONS
 
 200 = Success / OK
-400 = You messed up
-500 = They messed up
+201 = Created
+301 = Redirect
+304 = Cached response
+400 = Bad Request
+401 = Not Authenticated
+403 = Not Authorized
+404 = Not Found
+405 = Bad Method
+500 = Server Error
+502 = Bad Gateway Error
+503 = Service Unavailable
 
 HTTP Request
 1:1
