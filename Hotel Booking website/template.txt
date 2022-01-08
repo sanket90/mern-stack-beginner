@@ -1,0 +1,61 @@
+{
+    "name":"Taj",
+    "state":"NCT",
+    "address":"Tilak Nagar, New Delhi - 18",
+    "rooms":[
+        {
+            "typeOfroom":"Premium",
+	    "price":"50000",
+	    "images":{
+		"public_id":"sample image",
+		"url":"sample url"
+		      },
+	    "available":3	
+        },
+        {
+            "typeOfroom":"Deluxe",
+	    "price":"42000",
+	    "images":{
+		"public_id":"sample image2",
+		"url":"sample url2"
+		      },
+	    "available":4	
+        },
+        {
+            "typeOfroom":"Regular",
+	    "price":"20000",
+	    "images":{
+		"public_id":"sample image3",
+		"url":"sample url3"
+		      },
+	    "available":8	
+        }
+	      ],
+     "amenities":[
+        {
+           "facility":"Free Wifi"	
+        },
+        {
+           "facility":"Swimming pool"	
+        },
+        {
+           "facility":"Breakfast Buffet"	
+        },
+        {
+           "facility":"Spa and Sauna"	
+        },        
+        {
+           "facility":"24x7 Gymming facility"	
+        }
+    ]
+}
+
+
+http://localhost:4000/api/v1/hotel/61d482435825c15039342be8
+61d471c061a754abbb8081a7
+
+ahuja.lakshay22@gmail.com 
+Lakshay1802
+
+khsavi@gmail.com
+Enormous2021

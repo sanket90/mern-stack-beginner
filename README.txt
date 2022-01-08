@@ -104,3 +104,41 @@ REST - protocol
 All the API - Request-Response should be JSON
 Update HotelService to be more Functional
 Create new APIs for Create,Update,Delete hotels
+
+
+
+
+Qucik Recap
+NoSQL
+RDBMS vs NoSQL
+Collection-Document structure
+Mongo Atlas Setup
+
+
+Database Connection
+Data Modelling
+Integrating - GetAll API with Database
+Updating HotelService - for POST, PUT, DELETE, GET by ID
+Testing with Postman
+
+
+ReactJS Hotel form
+Create, Update, Delete
+Refresh
+Conclusion
+
+
+
+
+
+
+
+
+
+
+
+Data Modelling
+
+- User - id, email, pass, name
+- Hotels - id, same as schema
+- Booking - id, user_id, hotel_id, date, price
