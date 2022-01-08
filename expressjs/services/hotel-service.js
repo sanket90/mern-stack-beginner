@@ -1,45 +1,84 @@
-const fs = require('fs');
+const ApiFeatures = require("../utils/apiFeatures");
+const ErrorHandler = require("../utils/errorHandler");
+const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
+const Hotel = require("../models/hotelModel");
 
-class HotelDataService {
+exports.createHotel = catchAsyncErrors(async (req, res, next) => {
 
-    getAllHotels(competedCallbackFn) {
-        fs.readFile('./public/productList.json', (err, data) => {
-            if (err) {
-                console.log(err);
-                competedCallbackFn("Error");
-            }
+    const hotel = await Hotel.create(req.body);
 
-            competedCallbackFn(data.toString());
-        });
+    res.status(201).json({
+        success: true,
+        hotel
+    })
+
+});
+
+exports.getAllHotels = catchAsyncErrors(async (req, res) => {
+
+    const apiFeature = new ApiFeatures(Hotel.find(), req.query).search().filter();
+    const hotels = await apiFeature.query;
+
+    res.status(200).json({
+        success: true,
+        hotels
+    })
+
+});
+
+exports.getHotelDetails = catchAsyncErrors(async (req, res, next) => {
+
+    const hotel = await Hotel.findById(req.params.id);
+
+    if (!hotel) {
+        return next(new ErrorHandler("Hotel not found", 404));
+
     }
 
-    getHotelById(id, competedCallbackFn) {
-        fs.readFile('./public/productList.json', (err, data) => {
-            if (err) {
-                console.log(err);
-                competedCallbackFn("Error");
-            }
+    res.status(200).json({
+        success: true,
+        hotel
+    })
 
-            const hotelList = JSON.parse(data);
-            const hotelObj = hotelList.find(item => item.id == id);
-            competedCallbackFn(JSON.stringify(hotelObj));
-        });
+});
+
+exports.updateHotel = catchAsyncErrors(async (req, res, next) => {
+
+    let hotel = await Hotel.findById(req.params.id);
+
+    if (!hotel) {
+        return res.status(500).json({
+            success: false,
+            message: "Hotel not found on the given parameter."
+        })
     }
 
-    filterHotelByName(title) {
-      return this.hotelList
-        .sort((item1, item2) => item1.currentPrice < item2.currentPrice)
-        .filter(item => item.title == title);
-        
+    hotel = await Hotel.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    });
+
+    res.status(200).json({
+        success: true,
+        hotel
+    })
+});
+
+exports.deleteHotel = catchAsyncErrors(async (req, res, next) => {
+    const hotel = await Hotel.findById(req.params.id);
+
+    if (!hotel) {
+        return res.status(500).json({
+            success: false,
+            message: "Hotel not found."
+        })
     }
 
-    filterHotelByLocation(location) {
-      return this.hotelList
-        .filter(item => item.location == location)
-        .sort((item1, item2) => item1.currentPrice < item2.currentPrice);
-    }
+    await hotel.remove();
 
-}
-
-
-module.exports = HotelDataService;
+    res.status(200).json({
+        success: true,
+        message: "Hotel has been deleted."
+    })
+});
