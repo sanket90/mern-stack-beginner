@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 
 const {
     validateRegisterRequest,
