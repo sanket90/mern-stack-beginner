@@ -1,53 +1,62 @@
+const ErrorHandler = require("../utils/errorHandler");
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
-const validateRegisterRequest = (name, email, password) => {
-    // Validate user input
+
+exports.validateRegisterRequest = (name, email, password) => {
     if (!(email && password && name)) {
         throw new ErrorHandler("Mendatory input are empty.!", 400)
     }
 }
 
-exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+exports.checkIfUserAlreadyExists = async (email) => {
 
-    try {
-        // Get user input
-        const { name, email, password } = req.body;
+    // Validate if user exist in our database
+    const oldUser = await User.findOne({ email });
 
-        validateRegisterRequest(name, email, password);
+    if (oldUser) {
+        throw new ErrorHandler("User already registered.!", 400);
+    }
+}
 
-        // check if user already exist
-        // Validate if user exist in our database
-        const oldUser = await User.findOne({ email });
+exports.createNewUserInDatabase = async (name, email, encryptedPassword) => {
+    return await User.create({
+        name,
+        email: email.toLowerCase(), // sanitize: convert email to lowercase
+        password: encryptedPassword,
+    });
+}
 
-        if (oldUser) {
-            return next(new ErrorHandler("User already registered.!", 400));
+exports.generateToken = (user_id, email) => {
+    return jwt.sign(
+        { user_id, email },
+        process.env.TOKEN_KEY,
+        {
+            expiresIn: "2h",
         }
+    );
+}
 
-        //Encrypt user password
-        encryptedPassword = await bcrypt.hash(password, 10);
+exports.validateLoginRequest = (email, password) => {
+    if (!(email && password)) {
+        throw new ErrorHandler("Mendatory input are empty.!", 400)
+    }
+}
 
-        // Create user in our database
-        const user = await User.create({
-            name,
-            email: email.toLowerCase(), // sanitize: convert email to lowercase
-            password: encryptedPassword,
-        });
+exports.getUserByEmail = async (email) => {
 
-        // Create token
-        const token = jwt.sign(
-            { user_id: user._id, email },
-            process.env.TOKEN_KEY,
-            {
-                expiresIn: "2h",
-            }
-        );
-        // save user token
-        user.token = token;
+    // Validate if user exist in our database
+    const existingUser = await User.findOne({ email });
 
-        // return new user
-        res.status(201).json(user);
-    } catch (err) {
-        console.log(err);
+    if (!existingUser) {
+        throw new ErrorHandler("User does not exists!", 400);
     }
 
-});
+    return existingUser;
+}
+
+exports.validatePassword = async (password, userPassword) => {
+    if (await !bcrypt.compare(password, userPassword)) {
+        throw new ErrorHandler("Invalid Credentials!", 400);
+    }
+}

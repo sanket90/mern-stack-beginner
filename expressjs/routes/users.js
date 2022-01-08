@@ -1,11 +1,12 @@
 var express = require('express');
+const { registerUser } = require("../services/register-service");
+const { loginUser } = require("../services/login-service");
+
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
 
-  res.send('respond with a resource');
-  // throw new Error("This is Dummy error");
-});
+router.route("/login").post(loginUser);
+
+router.route("/register").post(registerUser);
 
 module.exports = router;

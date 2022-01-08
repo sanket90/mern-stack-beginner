@@ -1,7 +1,16 @@
 const express = require("express");
-const { getAllHotels, createHotel, updateHotel, deleteHotel, getHotelDetails } = require("../services/hotel-service");
+const { 
+    getAllHotels, 
+    createHotel, 
+    updateHotel, 
+    deleteHotel, 
+    getHotelDetails 
+} = require("../services/hotel-service");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
+
+router.use(auth)
 
 router
     .route("/hotels")
