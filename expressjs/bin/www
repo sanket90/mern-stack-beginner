@@ -11,7 +11,7 @@ var debug = require('debug')('expressjs:server');
 var http = require('http');
 
 //CONFIGURATION
-dotenv.config({path:"../config/config.env"});
+dotenv.config({ path: "./config/config.env" });
 
 //CONNECT TO DATABASE
 const connectDatabase = require("../config/database");

@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('./middlewares/logger');
-const { clientErrorHandler, serverErrorHandler } = require('./middlewares/error');
+const { defaultClientErrorHandler, defaultServerErrorHandler } = require('./middlewares/error');
 
 const app = express();
 app.use(logger());
@@ -18,7 +18,7 @@ const hotelRouter = require('./routes/hotels');
 app.use('/api/v1/hotels', hotelRouter);
 
 // Error Handlers should be placed last
-app.use(clientErrorHandler);
-app.use(serverErrorHandler);
+app.use(defaultClientErrorHandler);
+app.use(defaultServerErrorHandler);
 
 module.exports = app;
